@@ -81,3 +81,75 @@ comparison operators
 ### functions
 INTERESTINGLY, javascript functions also act as objects. So similar to other objects, they can also be assigned to variables and passed on as arguments as well
 
+```
+var add = function (a,b){
+    return a+b
+}
+
+console.log(add(2,3))
+```
+
+Note that in the above code, we defined a variable as a function
+
+
+It can be handy if we want a function to be a part of some other object. Such as in the below snippet
+
+```
+var John = {
+    name: 'John Doe',
+    age: 24,
+    greeting: function(){
+        return 'Hello! Nice to meet you!!'; 
+    }
+}
+
+console.log(John.greeting());
+```
+
+So in the above above, it acts similar to a class object with some values and some methods. But its not exactly the same way as a class object. 
+
+NOTE: I NEED TO STOP LOOKING AT JAVASCRIPT FROM THE GLASSES OF PYTHON OR ANY OTHER LANGUAGE THAT I HAVE LEARNT SO FAR.
+
+- The parameters passed to a function could be
+    - passed as value
+    - or passed as reference
+
+- When passed as value
+    - the original variable doesn't get affected by the modifications that are done to the passed item
+    - primitives, such as integers or strings are passed as value
+- But when passed as a reference, 
+    - the original object too gets affected.
+    - objects are passed as reference
+- Now this seems to be a bit similar to python
+
+### PROTOTYPE
+Now this thing sounds a bit similar to a class, but in javascript perspective its a little bit different.
+
+```
+function Person(name, age){
+    this.name = name;
+    this.age = age;
+    this.greeting = function() {
+        return 'Hello!! My name is ' + this.name;
+    }
+}
+
+var John = new Person('John Doe', 24);
+var Neha = new Person('Neha S', 22);
+```
+
+This prototype seems similar to a class, but its actually declared as a function.
+For both the var(i.e. John and Neha), it returns two separate object.
+THOUGH, i cannot find any return statement in that. So its some different type of function, indeed.
+
+#### Extending a prototype
+And this is what we call inheritance
+
+```
+function Student(name, age, school){
+    this.__proto__ = new Person(name, age);
+    this.school = school;
+}
+var rohit = new Student('Rohit', 34, 'IIM-L')
+rohit instanceof Person     //True
+```
