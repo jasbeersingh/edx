@@ -153,3 +153,113 @@ function Student(name, age, school){
 var rohit = new Student('Rohit', 34, 'IIM-L')
 rohit instanceof Person     //True
 ```
+
+### Strings
+- First thing first. THEY ARE IMMUTABLE
+- i.e 
+```
+var animal = 'cat'
+console.log(animal.chatAt(0))       // prints c
+console.log(animal[0])      // prints c
+animal[0] = 'r'             
+
+console.log(animal)     // cat
+```
+- as can be understood form the above snippet, 
+    - the chars of the string can be accessed 
+        - like array index
+        - using method charAt
+    - Both the method use the index to access the char
+    - Also, note that the string is immutable
+        - so trying to change the value of some index.
+        - ODD THING IS THAT IT DOESN'T GIVE ANY ERROR EITHER. So a naive developer would just KEEP THINKING ABOUT WHAT WENT WRONG
+
+
+__Here is something to understand about the immutable stuff__
+
+When a string is assigned to a variable, the var just points to a memory location where the string reside.
+Now, this string will always be immutable. its indexes cannot be changed or updated.
+BUT, here is the confusing part that needs to be understood.
+The variable can be made to point to a whole new string. That way, it simply starts pointing to a new memory location. 
+See the below code
+
+```
+animal = animal.toUppercase
+console.log(animal)     //prints CAT
+```
+
+previously, we could not modify the char at an index because the string is immutable. But here, the function returned a whole new string. so the vaiable now is assigned to a new string. The previous string one continues to be wherever is was and is still immutable. But the variable has been modified and assigned a new string now.
+
+#### Searching Strings
+
+The below functions return BOOLEAN and are all case-sensitive
+```
+Var msg = "This is a text"
+msg.startsWith('This')      // True
+msg.startsWith('THIS')      // False 
+msg.endsWith('test')        // False
+msg.endsWith('text')        // True
+msg.includes('is')          // True
+msg.include('his')          // True Note that its looking for substrings abd note words
+```
+
+Getting index of substring
+```
+Var msg = "This is a text"
+
+msg.search('is')        // returns  2 ==> returns the index of the first occurance. 
+msg.('hell')            // returns -1 ==> string not found
+```
+
+### REGEX in strings
+it can be used directly with in the search method of a string
+```
+var msg = "This is a text."
+msg.search(/text/)      // 10
+msg.search(/Text/)      // -1 case sensitive
+msg.search(/Text/i)     // 10 ==> 'i' means case Insensitive
+```
+
+- here /text/ is not a string but a regular expression.
+- It is an object in itself.
+- has its own methods as well
+
+```
+var myRegex = /text/
+myRegex.test("this is a text")      // True
+```
+
+
+__Some points about the regular expression__
+
+```
+var mreg = \[0-9][a-z][0-9]\
+```
+It matches for
+- a single digit
+- followd by a single char
+- than again a single digit
+- this pattern could be anywhere in the 
+eg
+```
+mreg.test('344d9')      // True  ==> 4d9
+mreg.test('2wws34')     // False
+```
+---
+
+```
+var mreg = \[0-9][a-z]?[0-9]\
+```
+- here the digit is optional 
+- so there can 0 or 1 digit
+
+``` 
+mreg.test('22334')      //True has number followed by 0 digit and another number
+mreg.test('jk3e4')      //True 3e4
+mreg.test('eer3')       // False
+```
+---
+```
+/^[0-9]/   ==> begins with the pattern
+/[0-9]$/   ==> ends with the pattern
+```
