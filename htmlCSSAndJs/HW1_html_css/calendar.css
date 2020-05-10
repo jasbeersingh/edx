@@ -84,3 +84,12 @@ ul {
 .appointment {
 	background-color:#FF7E6D;
 }
+
+.copyright-notice {
+	text-align: right;
+	vertical-align: bottom;
+	font-size: 50%;
+	color: #FFF;
+	padding-right: 50px;
+	
+}

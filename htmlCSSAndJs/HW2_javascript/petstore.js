@@ -9,7 +9,7 @@
  */
 function calculateFoodOrder(numAnimals, avgFood) {
     // IMPLEMENT THIS FUNCTION!
-    if (numAnimals <= 0 || (avgFood <= 0) || numAnimals == NaN || avgFood == NaN){
+    if (numAnimals <= 0 || (avgFood <= 0) || isNaN(numAnimals) || isNaN(avgFood)){
         return -1
     }
     return numAnimals * avgFood;
@@ -28,10 +28,10 @@ function mostPopularDays(week) {
     // IMPLEMENT THIS FUNCTION!
     var mpd = []
     if (week == null){
-        return mpd
+        return null
     }
     else if(week.length == 0){
-        return mpd
+        return null
     }else{
         mpd.push(week[0].name)
         highest_visits = week[0].traffic

@@ -263,3 +263,13 @@ mreg.test('eer3')       // False
 /^[0-9]/   ==> begins with the pattern
 /[0-9]$/   ==> ends with the pattern
 ```
+# Using Bootstrap
+- based on grid system
+- each element of the grid is rearranged depending upon the size of the user screen.
+- a block in the grid is created by added the respective elements to a div and adding the div to a "container" class, as shown below.
+```
+<div class="container"></div>
+```
+
+- all the content is organinsed in rows.
+
